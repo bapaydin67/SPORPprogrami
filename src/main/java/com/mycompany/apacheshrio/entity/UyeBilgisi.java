@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -41,36 +43,36 @@ import javax.xml.bind.annotation.XmlTransient;
 public class UyeBilgisi implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "Id")
     private Integer id;
-    @Basic(optional = false)
+  
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "UyeAdi")
     private String uyeAdi;
-    @Basic(optional = false)
+   
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "UyeSoyadi")
     private String uyeSoyadi;
-    @Basic(optional = false)
+  
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "Dogum_Tarihi")
     private String dogumTarihi;
-    @Basic(optional = false)
+   
     @NotNull
     @Column(name = "TelefonNo")
     private int telefonNo;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
+   
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "Email")
     private String email;
-    @Basic(optional = false)
+   
     @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "Cinsiyet")
