@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:body>
+
+        <ui:composition template="./../template/main.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:messages id="hataMesaji" />
+                    <p:dataTable value="#{kullaniciEkleController.kullaniciListesi}" var="kullanici" widgetVar="kullaniciTablosu" emptyMessage="No cars found with given criteria"
+                                 editable="true" style="margin-bottom:20px;" rows="10" paginator="true" >
+                        <f:facet name="header">
+                            Kullanici Tablosu Güncelleme
+                        </f:facet>
+                        
+                        <p:ajax event="rowEdit" listener="#{kullaniciEkleController.tabloyuGüncelle}" update=":form:hataMesaji"/>
+                        <p:ajax event="rowEditCancel" listener="#{kullaniciEkleController.onRowCancel}" update=":form:hataMesaji" />
+
+                        <p:column headerText="Kullanici ID" sortBy="#{kullanici.id}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{kullanici.id}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{kullanici.id}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Kullanici Adı">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{kullanici.kullaniciAdi}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{kullanici.kullaniciAdi}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Kullanici Şifre">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{kullanici.kullaniciSifresi}"/></f:facet>
+                                <f:facet name="input"><p:inputText value="#{kullanici.kullaniciSifresi}" style="width:100%"/> </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column style="width: 100px;">
+                            <p:rowEditor/>Güncelle
+                        </p:column>
+                    </p:dataTable>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>
