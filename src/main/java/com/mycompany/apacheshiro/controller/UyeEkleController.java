@@ -28,7 +28,7 @@ public class UyeEkleController {
 
     }
 
-    public void UyeKayitTamamla(UyeBilgisi uyeBilgisi) {
+    public void UyeKayitTamamla() {
         try {
             boolean UyeEklendiMI;
             UyeEklendiMI = yeniUyeEkleService.UYEKAYITYAP(uyeBilgisi);

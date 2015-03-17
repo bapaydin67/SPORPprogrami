@@ -40,7 +40,7 @@ and open the template in the editor.
                             </div>    
 
                             <div class="form-group">
-                                <h:outputLabel id="userNameLabel" for="uyeSoyadi" value="Uye Soyadi" class="control-label"/>
+                                <h:outputLabel id="userSurnameLabel" for="uyeSoyadi" value="Uye Soyadi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <p:inputText id="uyeSoyadi" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.uyeSoyadi}"/>
@@ -53,7 +53,7 @@ and open the template in the editor.
                             </div>    
 
                             <div class="form-group">
-                                <h:outputLabel id="userNameLabel" for="uyeD_Tarihi" value="Uye Dogum Tarihi" class="control-label"/>
+                                <h:outputLabel id="userBirthdateLabel" for="uyeD_Tarihi" value="Uye Dogum Tarihi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <p:inputText id="uyeD_Tarihi" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.dogumTarihi}"/>
@@ -66,7 +66,7 @@ and open the template in the editor.
                             </div> 
 
                             <div class="form-group">
-                                <h:outputLabel id="userNameLabel" for="TelefonNO" value="Uye Telefon Numarası" class="control-label"/>
+                                <h:outputLabel id="userPhoneLabel" for="TelefonNO" value="Uye Telefon Numarası" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <p:inputText id="TelefonNO" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.telefonNo}"/>
@@ -79,7 +79,7 @@ and open the template in the editor.
                             </div> 
                             
                              <div class="form-group">
-                                <h:outputLabel id="userNameLabel" for="Email" value="Uye Email Adresi" class="control-label"/>
+                                <h:outputLabel id="userEmailLabel" for="Email" value="Uye Email Adresi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <p:inputText id="Email" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.email}"/>
@@ -92,7 +92,7 @@ and open the template in the editor.
                             </div>
                             
                                 <div class="form-group">
-                                <h:outputLabel id="userNameLabel" for="Cinsiyet" value="Uye Cinsiyet" class="control-label"/>
+                                <h:outputLabel id="userSexLabel" for="Cinsiyet" value="Uye Cinsiyet" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <p:inputText id="Cinsiyet" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.cinsiyet}"/>
@@ -107,8 +107,8 @@ and open the template in the editor.
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <div class="input-group" style="float:right;">
-                                        <p:commandButton value="Uye Kayit Islemini Tamamla" styleClass="btn btn-success"
-                                                         action="#{uyeEkleController.UyeKayitTamamla(uyeBilgisi)}" icon="ui ui-icon-check" update="bilgiMesajı"/>
+                                        <p:commandButton value="Uye Ekle"  process="@form" styleClass="btn btn-success"
+                                                         action="#{uyeEkleController.UyeKayitTamamla()}" icon="ui ui-icon-check" update="bilgiMesajı"/>
                                     </div>
                                 </div>
                             </div> 
