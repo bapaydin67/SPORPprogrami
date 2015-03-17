@@ -6,11 +6,7 @@
 package com.mycompany.apacheshiro.controller;
 
 import com.mycompan.apacheshiro.service.YeniUyeEkleService;
-
 import com.mycompany.apacheshrio.entity.UyeBilgisi;
-import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -18,38 +14,35 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-@ManagedBean(name = "yeniUyeEkleController")
+@ManagedBean(name = "uyeEkleController")
 @ViewScoped
-public class YeniUyeEkleController implements Serializable {
+public class UyeEkleController {
 
     UyeBilgisi uyeBilgisi = new UyeBilgisi();
-    String MesajGoster;
     @Inject
-    YeniUyeEkleService uyeEkleService;
+    YeniUyeEkleService yeniUyeEkleService;
+    private String MesajGoster;
 
     @PostConstruct
     public void init() {
 
     }
 
-    public void UYEInsert() {
+    public void UyeKayitTamamla(UyeBilgisi uyeBilgisi) {
         try {
-            boolean kullaniciVarMi = uyeEkleService.uyeEkle(uyeBilgisi);
-            if (kullaniciVarMi) {
-
-                MesajGoster = "Kullanici başariyla eklendi";
-
-              
+            boolean UyeEklendiMI;
+            UyeEklendiMI = yeniUyeEkleService.UYEKAYITYAP(uyeBilgisi);
+            if (UyeEklendiMI) {
+                MesajGoster = "Uye Kayit Yapıldı.";
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(MesajGoster, "Başarılı"));
             } else {
-
-                
+                MesajGoster = "Uye Kayit Yapılmadı.";
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(MesajGoster, "Başarısız"));
             }
-        } catch (Exception e) {
-
-           
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
         }
+
     }
 
     public UyeBilgisi getUyeBilgisi() {

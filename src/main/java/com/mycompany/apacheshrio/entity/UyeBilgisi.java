@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class UyeBilgisi implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "Id")
     private Integer id;
@@ -66,13 +66,13 @@ public class UyeBilgisi implements Serializable {
     @NotNull
     @Column(name = "TelefonNo")
     private int telefonNo;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    
    
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "Email")
     private String email;
-   
+   // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "Cinsiyet")

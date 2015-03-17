@@ -6,11 +6,11 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html  xmlns="http://www.w3.org/1999/xhtml"  
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"          
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-     <h:body>
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p="http://primefaces.org/ui"          
+       >
+    <h:body>
 
         <ui:composition template="./../template/main.xhtml">
             <ui:define name="content">
@@ -19,47 +19,96 @@ and open the template in the editor.
                     <div class="widget-header">
                         <h3>
                             <i class="fa fa-edit"></i>
-                            Yeni Uye Ekleme Ekranı...
+                            Üye Ekle Paneli
                         </h3>
                     </div>
 
                     <div class="widget-content">
                         <h:form class="form-horizontal">
+                            <p:messages id="bilgiMesajı"/>
                             <div class="form-group">
-                                <h:outputLabel for="uyeAdi" value="Uye Adı :" class="control-label"/>
-                                <p:inputText id="uyeAdi" styleClass="form-control" value="#{yeniUyeEkleController.uyeBilgisi.uyeAdi}"/>
+                                <h:outputLabel id="userNameLabel" for="uyeAdi" value="Uye Adı" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeAdi" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.uyeAdi}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
                             </div>    
 
                             <div class="form-group">
-                                <h:outputLabel  for="uyeSoyadi" value="Uye Soyadi :" class="control-label"/>
-                                <p:inputText id="uyeSoyadi" styleClass="form-control" value="#{yeniUyeEkleController.uyeBilgisi.uyeSoyadi}"/>
-                            </div>  
+                                <h:outputLabel id="userNameLabel" for="uyeSoyadi" value="Uye Soyadi" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeSoyadi" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.uyeSoyadi}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>    
 
                             <div class="form-group">
-                                <h:outputLabel  for="uyeDogumTarihi" value="Doğum Tarihi :" class="control-label"/>
-                                <p:inputText id="uyeDogumTarihi" styleClass="form-control" value="#{yeniUyeEkleController.uyeBilgisi.dogumTarihi}"/>
+                                <h:outputLabel id="userNameLabel" for="uyeD_Tarihi" value="Uye Dogum Tarihi" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeD_Tarihi" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.dogumTarihi}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
                             </div> 
 
                             <div class="form-group">
-                                <h:outputLabel  for="uyeTelNo" value="Telefon Numarası :" class="control-label"/>
-                                <p:inputText id="uyeTelNo" styleClass="form-control" value="#{yeniUyeEkleController.uyeBilgisi.telefonNo}"/>
+                                <h:outputLabel id="userNameLabel" for="TelefonNO" value="Uye Telefon Numarası" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="TelefonNO" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.telefonNo}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div> 
+                            
+                             <div class="form-group">
+                                <h:outputLabel id="userNameLabel" for="Email" value="Uye Email Adresi" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="Email" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.email}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                                <div class="form-group">
+                                <h:outputLabel id="userNameLabel" for="Cinsiyet" value="Uye Cinsiyet" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="Cinsiyet" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.cinsiyet}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <h:outputLabel  for="uyeEmailAdres" value="EMail Adresi :" class="control-label"/>
-                                <p:inputText id="uyeEmailAdres" styleClass="form-control" value="#{yeniUyeEkleController.uyeBilgisi.email}"/>
-                            </div>
-
-                            <div class="form-group">
-                                <h:outputLabel for="uyeCinsiyet" value="Uye Cinsiyet :" class="control-label"/>
-                                <p:inputText id="uyeEmailAdres" styleClass="form-control" value="#{yeniUyeEkleController.uyeBilgisi.cinsiyet}"/>
-                            </div>
-
-                         <div class="form-group">
                                 <div class="col-sm-12">
                                     <div class="input-group" style="float:right;">
-                                        <p:commandButton value="Yeni Uye Kayıt Ekle." styleClass="btn btn-success"
-                                                         action="#{yeniUyeEkleController.UYEInsert()}" />
+                                        <p:commandButton value="Uye Kayit Islemini Tamamla" styleClass="btn btn-success"
+                                                         action="#{uyeEkleController.UyeKayitTamamla(uyeBilgisi)}" icon="ui ui-icon-check" update="bilgiMesajı"/>
                                     </div>
                                 </div>
                             </div> 

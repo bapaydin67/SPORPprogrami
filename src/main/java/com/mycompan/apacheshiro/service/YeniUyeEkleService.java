@@ -10,18 +10,21 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+
+
 @Stateless
 public class YeniUyeEkleService  {
 
     @PersistenceContext(unitName = "com.mycompany_ApacheShiro_war_1.0-SNAPSHOTPU")
     EntityManager entityManager;
 
-    public boolean uyeEkle(UyeBilgisi uyeBilgisi) {
+    
+        public boolean UYEKAYITYAP(UyeBilgisi uyeBilgisi) {
         try {
             entityManager.persist(uyeBilgisi);
             return true;
-        } catch (Exception ex) {
-            ex.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
             return false;
         }
     }
