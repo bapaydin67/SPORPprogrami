@@ -7,6 +7,8 @@ package com.mycompany.apacheshiro.controller;
 
 import com.mycompan.apacheshiro.service.YeniUyeEkleService;
 import com.mycompany.apacheshrio.entity.UyeBilgisi;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -23,9 +25,11 @@ public class UyeEkleController {
     YeniUyeEkleService yeniUyeEkleService;
     private String MesajGoster;
 
+    List<UyeBilgisi> uyeListesiVer = new ArrayList<UyeBilgisi>();
+
     @PostConstruct
     public void init() {
-
+        uyeListesiVer = yeniUyeEkleService.uyeleriGetir();
     }
 
     public void UyeKayitTamamla() {
@@ -52,4 +56,13 @@ public class UyeEkleController {
     public void setUyeBilgisi(UyeBilgisi uyeBilgisi) {
         this.uyeBilgisi = uyeBilgisi;
     }
+
+    public List<UyeBilgisi> getUyeListesiVer() {
+        return uyeListesiVer;
+    }
+
+    public void setUyeListesiVer(List<UyeBilgisi> uyeListesiVer) {
+        this.uyeListesiVer = uyeListesiVer;
+    }
+
 }

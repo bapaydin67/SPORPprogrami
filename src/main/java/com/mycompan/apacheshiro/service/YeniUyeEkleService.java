@@ -5,10 +5,16 @@
  */
 package com.mycompan.apacheshiro.service;
 
+import com.mycompany.apacheshrio.entity.KullaniciTablosu;
 import com.mycompany.apacheshrio.entity.UyeBilgisi;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 
@@ -18,6 +24,7 @@ public class YeniUyeEkleService  {
     @PersistenceContext(unitName = "com.mycompany_ApacheShiro_war_1.0-SNAPSHOTPU")
     EntityManager entityManager;
 
+   
     
         public boolean UYEKAYITYAP(UyeBilgisi uyeBilgisi) {
         try {
@@ -28,5 +35,25 @@ public class YeniUyeEkleService  {
             return false;
         }
     }
+        
+        public List<UyeBilgisi> uyeleriGetir()
+        {
+            List<UyeBilgisi> uyeListesi=new ArrayList<>();
+            Query query=entityManager.createQuery("Select U from UyeBilgisi U");
+            try
+            {
+                uyeListesi=query.getResultList();
+                return uyeListesi;
+            }
+            catch(NoResultException nre)
+            {
+                nre.printStackTrace(System.out);
+            return null;
+            }
+            catch(NonUniqueResultException nue)
+            {
+                return (List<UyeBilgisi>) query.getResultList().get(0);
+            }
+        }
 
 }
