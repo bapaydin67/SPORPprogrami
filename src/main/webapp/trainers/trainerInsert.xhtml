@@ -5,18 +5,18 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
-
-    <h:body>
+    <body>
 
         <ui:composition template="./../template/main.xhtml">
 
             <ui:define name="content">
+
                 <div class="widget">
 
                     <div class="widget-header">
                         <h3>
                             <i class="fa fa-edit"></i>
-                            Üye Ekle Paneli
+                            Hoca Ekleme Panelii
                         </h3>
                     </div>
 
@@ -24,10 +24,10 @@
                         <h:form class="form-horizontal">
                             <p:messages id="bilgiMesajı"/>
                             <div class="form-group">
-                                <h:outputLabel id="userNameLabel" for="userName" value="Adı" class="control-label"/>
+                                <h:outputLabel for="hocaAdi" value="Hoca Adı" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="userName" styleClass="form-control" value="#{kullaniciController.kullaniciTablosu.kullaniciAdi}"/>
+                                        <p:inputText id="hocaAdi" styleClass="form-control" value="#{hocaController.hocaBilgileri.hocaAdi}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -37,29 +37,46 @@
                             </div>    
 
                             <div class="form-group">
-                                <h:outputLabel id="passwordLabel" for="password" value="Şifre" class="control-label"/>
+                                <h:outputLabel for="hocaSoyadi" value="Hoca Soyadi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:password id="password" styleClass="form-control" value="#{kullaniciController.kullaniciTablosu.kullaniciSifresi}"/>
+                                        <p:inputText id="hocaSoyadi" styleClass="form-control" value="#{hocaController.hocaBilgileri.hocaSoyadi}"/>
                                         <span class="input-group-addon">
-                                            <i class="fa fa-key"></i>
+                                            <i class="fa fa-user"></i>
                                         </span>
+
                                     </div>
                                 </div>
-                            </div>  
+                            </div>    
+
+                            <div class="form-group">
+                                <h:outputLabel for="hocaSeviye" value="Hoca Seviye" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="hocaSeviye" styleClass="form-control" value="#{hocaController.hocaBilgileri.hocaSeviye}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-level-up"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div> 
 
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <div class="input-group" style="float:right;">
-                                        <p:commandButton value="Kullanıcı Kayıt Tamamla" styleClass="btn btn-success"
-                                                         action="#{kullaniciController.kullaniciInsert()}" icon="ui ui-icon-check" update="bilgiMesajı"/>
+                                        <p:commandButton value="Uye Ekle"  process="@form" styleClass="btn btn-success"
+                                                         action="#{hocaController.hocaEkle()}" icon="ui ui-icon-check" update="bilgiMesajı"/>
                                     </div>
                                 </div>
                             </div> 
                         </h:form>
                     </div>
                 </div>
+
             </ui:define>
+
         </ui:composition>
-    </h:body>
+
+    </body>
 </html>

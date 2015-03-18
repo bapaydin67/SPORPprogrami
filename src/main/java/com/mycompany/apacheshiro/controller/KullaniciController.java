@@ -5,9 +5,8 @@
  */
 package com.mycompany.apacheshiro.controller;
 
-import com.mycompan.apacheshiro.service.KullaniciEkleService;
+import com.mycompan.apacheshiro.service.KullaniciService;
 import com.mycompany.apacheshrio.entity.KullaniciTablosu;
-import com.mycompany.apacheshrio.entity.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +25,9 @@ import org.primefaces.event.RowEditEvent;
  *
  * @author Batuhan
  */
-@ManagedBean(name = "kullaniciEkleController")
+@ManagedBean(name = "kullaniciController")
 @ViewScoped
-public class KullaniciEkleController implements Serializable {
+public class KullaniciController implements Serializable {
 
     KullaniciTablosu kullaniciTablosu = new KullaniciTablosu();
     KullaniciTablosu secilenKullaniciTablosu = new KullaniciTablosu();
@@ -39,7 +38,7 @@ public class KullaniciEkleController implements Serializable {
     private String message;
 
     @Inject
-    KullaniciEkleService kullaniciEkleService;
+    KullaniciService kullaniciEkleService;
 
     @PostConstruct
     public void init() {

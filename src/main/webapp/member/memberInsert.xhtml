@@ -30,7 +30,7 @@ and open the template in the editor.
                                 <h:outputLabel id="userNameLabel" for="uyeAdi" value="Uye Adı" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="uyeAdi" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.uyeAdi}"/>
+                                        <p:inputText id="uyeAdi" styleClass="form-control" value="#{uyeController.uyeBilgisi.uyeAdi}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -43,7 +43,7 @@ and open the template in the editor.
                                 <h:outputLabel id="userSurnameLabel" for="uyeSoyadi" value="Uye Soyadi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="uyeSoyadi" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.uyeSoyadi}"/>
+                                        <p:inputText id="uyeSoyadi" styleClass="form-control" value="#{uyeController.uyeBilgisi.uyeSoyadi}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -56,7 +56,7 @@ and open the template in the editor.
                                 <h:outputLabel id="userBirthdateLabel" for="uyeD_Tarihi" value="Uye Dogum Tarihi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="uyeD_Tarihi" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.dogumTarihi}"/>
+                                        <p:inputText id="uyeD_Tarihi" styleClass="form-control" value="#{uyeController.uyeBilgisi.dogumTarihi}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -69,7 +69,7 @@ and open the template in the editor.
                                 <h:outputLabel id="userPhoneLabel" for="TelefonNO" value="Uye Telefon Numarası" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="TelefonNO" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.telefonNo}"/>
+                                        <p:inputText id="TelefonNO" styleClass="form-control" value="#{uyeController.uyeBilgisi.telefonNo}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -82,7 +82,7 @@ and open the template in the editor.
                                 <h:outputLabel id="userEmailLabel" for="Email" value="Uye Email Adresi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="Email" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.email}"/>
+                                        <p:inputText id="Email" styleClass="form-control" value="#{uyeController.uyeBilgisi.email}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -95,7 +95,7 @@ and open the template in the editor.
                                 <h:outputLabel id="userSexLabel" for="Cinsiyet" value="Uye Cinsiyet" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="Cinsiyet" styleClass="form-control" value="#{uyeEkleController.uyeBilgisi.cinsiyet}"/>
+                                        <p:inputText id="Cinsiyet" styleClass="form-control" value="#{uyeController.uyeBilgisi.cinsiyet}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -108,7 +108,7 @@ and open the template in the editor.
                                 <div class="col-sm-12">
                                     <div class="input-group" style="float:right;">
                                         <p:commandButton value="Uye Ekle"  process="@form" styleClass="btn btn-success"
-                                                         action="#{uyeEkleController.UyeKayitTamamla()}" icon="ui ui-icon-check" update="bilgiMesajı"/>
+                                                         action="#{uyeController.UyeKayitTamamla()}" icon="ui ui-icon-check" update="bilgiMesajı"/>
                                     </div>
                                 </div>
                             </div> 

@@ -74,6 +74,7 @@ public class UyeOlcum implements Serializable {
     @NotNull
     @Column(name = "IdealKilosu")
     private int idealKilosu;
+    
     @JoinColumn(name = "UyeId", referencedColumnName = "Id")
     @ManyToOne(optional = false)
     private UyeBilgisi uyeId;

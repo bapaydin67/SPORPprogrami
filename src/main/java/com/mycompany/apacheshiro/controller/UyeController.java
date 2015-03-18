@@ -5,8 +5,9 @@
  */
 package com.mycompany.apacheshiro.controller;
 
-import com.mycompan.apacheshiro.service.YeniUyeEkleService;
+import com.mycompan.apacheshiro.service.UyeService;
 import com.mycompany.apacheshrio.entity.UyeBilgisi;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -16,26 +17,26 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-@ManagedBean(name = "uyeEkleController")
+@ManagedBean(name = "uyeController")
 @ViewScoped
-public class UyeEkleController {
+public class UyeController implements Serializable{
 
     UyeBilgisi uyeBilgisi = new UyeBilgisi();
     @Inject
-    YeniUyeEkleService yeniUyeEkleService;
+    UyeService uyeService;
     private String MesajGoster;
 
     List<UyeBilgisi> uyeListesiVer = new ArrayList<UyeBilgisi>();
 
     @PostConstruct
     public void init() {
-        uyeListesiVer = yeniUyeEkleService.uyeleriGetir();
+        uyeListesiVer = uyeService.uyeleriGetir();
     }
 
     public void UyeKayitTamamla() {
         try {
             boolean UyeEklendiMI;
-            UyeEklendiMI = yeniUyeEkleService.UYEKAYITYAP(uyeBilgisi);
+            UyeEklendiMI = uyeService.UYEKAYITYAP(uyeBilgisi);
             if (UyeEklendiMI) {
                 MesajGoster = "Uye Kayit Yapıldı.";
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(MesajGoster, "Başarılı"));

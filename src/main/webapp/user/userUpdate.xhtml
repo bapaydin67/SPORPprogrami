@@ -13,14 +13,14 @@
             <ui:define name="content">
                 <h:form id="form">
                     <p:messages id="hataMesaji" />
-                    <p:dataTable value="#{kullaniciEkleController.kullaniciListesi}" var="kullanici" widgetVar="kullaniciTablosu" emptyMessage="No cars found with given criteria"
+                    <p:dataTable value="#{kullaniciController.kullaniciListesi}" var="kullanici" widgetVar="kullaniciTablosu" emptyMessage="No cars found with given criteria"
                                  editable="true" style="margin-bottom:20px;" rows="10" paginator="true" >
                         <f:facet name="header">
                             Kullanici Tablosu Güncelleme
                         </f:facet>
                         
-                        <p:ajax event="rowEdit" listener="#{kullaniciEkleController.tabloyuGüncelle}" update=":form:hataMesaji"/>
-                        <p:ajax event="rowEditCancel" listener="#{kullaniciEkleController.onRowCancel}" update=":form:hataMesaji" />
+                        <p:ajax event="rowEdit" listener="#{kullaniciController.tabloyuGüncelle}" update=":form:hataMesaji"/>
+                        <p:ajax event="rowEditCancel" listener="#{kullaniciController.onRowCancel}" update=":form:hataMesaji" />
 
                         <p:column headerText="Kullanici ID" sortBy="#{kullanici.id}">
                             <p:cellEditor>

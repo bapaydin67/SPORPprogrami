@@ -13,14 +13,14 @@
             <ui:define name="content">
                 <h:form id="form">
                     <p:messages id="hataMesaji" />
-                    <p:dataTable id="userTable" value="#{kullaniciEkleController.kullaniciListesi}" var="kullanici"
+                    <p:dataTable id="userTable" value="#{kullaniciController.kullaniciListesi}" var="kullanici"
                                  editable="true" style="margin-bottom:20px;" rows="10" paginator="true">
                         
                         <f:facet name="header">
                             Kullanici Tablosu Silme
                         </f:facet>
 
-                        <p:ajax event="rowEdit" update=":form:hataMesaji :form:userTable" listener="#{kullaniciEkleController.tabloyuSil}"/>
+                        <p:ajax event="rowEdit" update=":form:hataMesaji :form:userTable" listener="#{kullaniciController.tabloyuSil}"/>
 
                         <p:column headerText="Kullanici ID" sortBy="#{kullanici.id}">
                             <p:cellEditor>

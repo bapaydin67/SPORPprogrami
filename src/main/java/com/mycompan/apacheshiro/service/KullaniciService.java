@@ -6,7 +6,6 @@
 package com.mycompan.apacheshiro.service;
 
 import com.mycompany.apacheshrio.entity.KullaniciTablosu;
-import com.mycompany.apacheshrio.entity.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -21,7 +20,7 @@ import javax.persistence.Query;
  * @author Batuhan
  */
 @Stateless
-public class KullaniciEkleService {
+public class KullaniciService {
 
     @PersistenceContext(unitName = "com.mycompany_ApacheShiro_war_1.0-SNAPSHOTPU")
     EntityManager entityManager;

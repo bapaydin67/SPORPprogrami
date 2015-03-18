@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.apacheshrio.entity;
 
 import java.io.Serializable;
@@ -12,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -36,27 +37,29 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "HocaBilgileri.findByHocaSoyadi", query = "SELECT h FROM HocaBilgileri h WHERE h.hocaSoyadi = :hocaSoyadi"),
     @NamedQuery(name = "HocaBilgileri.findByHocaSeviye", query = "SELECT h FROM HocaBilgileri h WHERE h.hocaSeviye = :hocaSeviye")})
 public class HocaBilgileri implements Serializable {
+
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 50)
+    @NotNull
     @Column(name = "HocaAdi")
     private String hocaAdi;
-    @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 50)
+    @NotNull
     @Column(name = "HocaSoyadi")
     private String hocaSoyadi;
-    @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 250)
+    @NotNull
     @Column(name = "HocaSeviye")
     private String hocaSeviye;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hocaId")
     private List<ProgramTablosu> programTablosuList;
 
@@ -139,5 +142,5 @@ public class HocaBilgileri implements Serializable {
     public String toString() {
         return "com.mycompany.apacheshrio.entity.HocaBilgileri[ id=" + id + " ]";
     }
-    
+
 }

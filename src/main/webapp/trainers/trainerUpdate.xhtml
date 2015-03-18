@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:body>
+
+        <ui:composition template="./../template/main.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:messages id="hataMesaji" />
+                    <p:dataTable value="#{hocaController.hocaListesi}" var="hoca" emptyMessage="No trainers found with given criteria"
+                                 editable="true" style="margin-bottom:20px;" rows="10" paginator="true" >
+                        <f:facet name="header">
+                            Hoca Tablosu Güncelleme
+                        </f:facet>
+
+                        <p:ajax event="rowEdit" listener="#{hocaController.hocaBilgisiGüncelle}" update=":form:hataMesaji"/>
+                        <p:ajax event="rowEditCancel" listener="#{hocaController.onRowCancel}" update=":form:hataMesaji" />
+
+                        <p:column headerText="Hoca ID" sortBy="#{hoca.id}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{hoca.id}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{hoca.id}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Hoca Adı">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{hoca.hocaAdi}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{hoca.hocaAdi}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Hoca Soyadı">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{hoca.hocaSoyadi}"/></f:facet>
+                                <f:facet name="input"><p:inputText value="#{hoca.hocaSoyadi}" style="width:100%"/> </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Hoca Seviye">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{hoca.hocaSeviye}"/></f:facet>
+                                <f:facet name="input"><p:inputText value="#{hoca.hocaSeviye}" style="width:100%"/> </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+
+                        <p:column style="width: 100px;">
+                            <p:rowEditor/>Güncelle
+                        </p:column>
+                    </p:dataTable>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

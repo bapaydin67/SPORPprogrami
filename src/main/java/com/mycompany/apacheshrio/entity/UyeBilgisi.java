@@ -77,8 +77,10 @@ public class UyeBilgisi implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "Cinsiyet")
     private String cinsiyet;
+       
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "uyeId")
     private List<UyeOlcum> uyeOlcumList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "uyeId")
     private List<ProgramTablosu> programTablosuList;
 
