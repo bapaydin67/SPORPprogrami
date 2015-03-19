@@ -29,8 +29,7 @@ public class UyeController implements Serializable{
     UyeService yeniUyeEkleService;
     UyeBilgisi secilenUye = new UyeBilgisi();
 
-    List<UyeBilgisi> uyeListesiVer = new ArrayList<UyeBilgisi>();
-    List<UyeBilgisi> guncelUyeListesi = new ArrayList<>();
+    List<UyeBilgisi> uyeListesiVer = new ArrayList<UyeBilgisi>();  
     List<UyeBilgisi> uyeListeVer_2 = new ArrayList<>();
 
     @PostConstruct
@@ -92,8 +91,8 @@ public class UyeController implements Serializable{
                 MesajGoster = "Secilen Uye Başarıyla Silindi.";
                 FacesMessage facesMessage = new FacesMessage(MesajGoster, MesajGoster);
                 FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-                guncelUyeListesi = yeniUyeEkleService.uyeleriGetir();
-                uyeListesiVer = guncelUyeListesi;
+                uyeListesiVer = yeniUyeEkleService.uyeleriGetir();
+
             } else {
                 MesajGoster = "Seçilen Uye Silinemedi.";
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(MesajGoster, "Başarısız"));

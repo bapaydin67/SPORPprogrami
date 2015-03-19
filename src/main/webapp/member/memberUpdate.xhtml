@@ -13,69 +13,78 @@ and open the template in the editor.
 
     <h:body>
         <ui:composition template="./../template/main.xhtml">
-            
+
             <ui:define name="content">
                 <h:form id="form">
-                    <p:dataTable value="#{uyeController.uyeListesiVer}" var="uye" widgetVar="UyeTablosu" emptyMessage="No cars found with given criteria"
-                         editable="true" style="margin-bottom:20px;" rows="10" paginator="true">
+                    <p:dataTable value="#{uyeController.uyeListesiVer}" var="uye" widgetVar="UyeTablosu" 
+                                 emptyMessage="No cars found with given criteria"
+                                 editable="true" style="margin-bottom:20px;" rows="10" paginator="true" filteredValue="#{uyeController.uyeListesiVer}>
 
-                <f:facet name="header">
-                    Uye Tablosu Güncelleme
-                </f:facet>
+                                 <f:facet name="header">
+                                 Uye Tablosu Güncelleme
+                                 </f:facet>
+
+                        <f:facet name="header">
+                            <p:outputPanel style="float: right">
+                                <h:outputText value="Tüm Uye Ara :" style="margin-top: 0px" />
+                                <p:inputText id="globalFilter" onkeyup="PF('UyeTablosu').filter()" style="width:170px;height: 25px; margin-top: 0px" placeholder=" Uye Arama"/>
+                            </p:outputPanel>
+                        </f:facet>
 
 
-                <p:column headerText="Uye ID" sortBy="#{uye.id}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{uye.id}" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{uye.id}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
 
-                <p:column headerText="Uye Adı" sortBy="#{uye.uyeAdi}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{uye.uyeAdi}" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{uye.uyeAdi}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
+                        <p:column headerText="Uye ID" sortBy="#{uye.id}" filterBy="#{uye.id}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.id}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.id}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
 
-                <p:column headerText="Uye Soyadi" sortBy="#{uye.uyeSoyadi}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{uye.uyeSoyadi}" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{uye.uyeSoyadi}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
-                
-                <p:column headerText="Uye Dogum Tarihi" sortBy="#{uye.dogumTarihi}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{uye.dogumTarihi}" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{uye.dogumTarihi}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
-                
-                <p:column headerText="Uye Telefon No" sortBy="#{uye.telefonNo}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{uye.telefonNo}" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{uye.telefonNo}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
-                
-                <p:column headerText="Uye Email" sortBy="#{uye.email}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{uye.email}" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{uye.email}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
-                
-                <p:column headerText="Uye Cinsiyet" sortBy="#{uye.cinsiyet}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{uye.cinsiyet}" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{uye.cinsiyet}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
-            </p:dataTable>
+                                 <p:column headerText="Uye Adı" sortBy="#{uye.uyeAdi}" filterBy="#{uye.uyeAdi}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.uyeAdi}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.uyeAdi}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                                 <p:column headerText="Uye Soyadi" sortBy="#{uye.uyeSoyadi}" filterBy="#{uye.uyeSoyadi}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.uyeSoyadi}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.uyeSoyadi}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                                 <p:column headerText="Uye Dogum Tarihi" sortBy="#{uye.dogumTarihi}" filterBy="#{uye.dogumTarihi}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.dogumTarihi}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.dogumTarihi}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                                 <p:column headerText="Uye Telefon No" sortBy="#{uye.telefonNo}" filterBy="#{uye.telefonNo}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.telefonNo}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.telefonNo}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                                 <p:column headerText="Uye Email" sortBy="#{uye.email}" filterBy="#{uye.email}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.email}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.email}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                                 <p:column headerText="Uye Cinsiyet" sortBy="#{uye.cinsiyet}" filterBy="#{uye.cinsiyet}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.cinsiyet}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.cinsiyet}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
             </ui:define>
-           
+
         </ui:composition>
     </h:body>
 </html>
