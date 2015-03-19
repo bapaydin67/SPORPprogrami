@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      <h:body>
+        <ui:composition template="./../template/main.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:messages id="hataMesaji" />
+                     <p:dataTable  value="#{uyeEkleController.uyeListesiVer}" var="uye" widgetVar="UyeTablosu" emptyMessage="No cars found with given criteria"
+                                 editable="true" style="margin-bottom:20px;" rows="50" paginator="true" filteredValue="#{uyeEkleController.uyeListeVer_2}">
+
+                        <f:facet name="header">
+                            Uye Tablosu Güncelleme
+                        </f:facet>
+
+                        <f:facet name="header">
+                            <p:outputPanel style="float: right">
+                                <h:outputText value="Tüm Uye Ara :" style="margin-top: 0px" />
+                                <p:inputText id="globalFilter" onkeyup="PF('UyeTablosu').filter()" style="width:170px;height: 25px; margin-top: 0px" placeholder=" Uye Arama"/>
+                            </p:outputPanel>
+                        </f:facet>
+
+                         <p:ajax event="rowEdit" listener="#{uyeEkleController.uyeSil}" update=":form:hataMesaji"/>
+                     
+
+                        <p:column headerText="Uye ID" filterBy="#{uye.id}" filterMatchMode="contains" sortBy="#{uye.id}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.id}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.id}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Uye Adı" filterBy="#{uye.uyeAdi}" filterMatchMode="contains" sortBy="#{uye.uyeAdi}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.uyeAdi}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.uyeAdi}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Uye Soyadi" filterBy="#{uye.uyeSoyadi}" filterMatchMode="contains"  sortBy="#{uye.uyeSoyadi}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.uyeSoyadi}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.uyeSoyadi}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Uye Dogum Tarihi" filterBy="#{uye.dogumTarihi}" filterMatchMode="contains"  sortBy="#{uye.dogumTarihi}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.dogumTarihi}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.dogumTarihi}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Uye Telefon No" filterBy="#{uye.telefonNo}" filterMatchMode="contains"  sortBy="#{uye.telefonNo}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.telefonNo}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.telefonNo}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Uye Email" filterBy="#{uye.email}" filterMatchMode="contains"  sortBy="#{uye.email}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.email}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.email}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Uye Cinsiyet" filterBy="#{uye.cinsiyet}" filterMatchMode="contains"  sortBy="#{uye.cinsiyet}">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{uye.cinsiyet}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{uye.cinsiyet}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column style="width: 100px;">
+                            <p:rowEditor/>Uye'yi Sil
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
