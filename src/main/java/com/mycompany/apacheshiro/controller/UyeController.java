@@ -25,8 +25,12 @@ public class UyeController implements Serializable{
     @Inject
     UyeService uyeService;
     private String MesajGoster;
+    UyeService yeniUyeEkleService;
+    UyeBilgisi secilenUye = new UyeBilgisi();
 
     List<UyeBilgisi> uyeListesiVer = new ArrayList<UyeBilgisi>();
+    List<UyeBilgisi> guncelUyeListesi = new ArrayList<>();
+    List<UyeBilgisi> uyeListeVer_2 = new ArrayList<>();
 
     @PostConstruct
     public void init() {

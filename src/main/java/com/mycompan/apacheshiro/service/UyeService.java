@@ -44,5 +44,29 @@ public class UyeService {
             return (List<UyeBilgisi>) query.getResultList().get(0);
         }
     }
+    
+    
+    public boolean uyeBilgisiGuncele(UyeBilgisi uyeBilgisi) {
+        try {
+            entityManager.merge(uyeBilgisi);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+            return false;
+        }
+
+    }
+
+
+    public boolean uyeBilgisiSil(UyeBilgisi uyeBilgisi) {
+        try {
+            uyeBilgisi = entityManager.merge(uyeBilgisi);
+            entityManager.remove(uyeBilgisi);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
 
 }
