@@ -28,8 +28,11 @@ import org.primefaces.event.RowEditEvent;
 public class HocaController implements Serializable {
 
     private HocaBilgileri hocaBilgileri;
+    private HocaBilgileri secilenHocaBilgileri = new HocaBilgileri();
+
     private String message;
     private List<HocaBilgileri> hocaListesi = new ArrayList<HocaBilgileri>();
+    private List<HocaBilgileri> aramaHocaBilgileri = new ArrayList<HocaBilgileri>();
 
     @Inject
     HocaService hocaService;
@@ -38,6 +41,7 @@ public class HocaController implements Serializable {
     public void init() {
         hocaBilgileri = new HocaBilgileri();
         hocaListesi = hocaService.hocaBilgileriGetir();
+        aramaHocaBilgileri = hocaService.hocaBilgileriGetir();
         message = null;
     }
 
@@ -80,6 +84,30 @@ public class HocaController implements Serializable {
 
     }
 
+    public void hocaBilgisiSil(RowEditEvent editEvent) {
+        int hocaId = ((HocaBilgileri) editEvent.getObject()).getId();
+        String hocaAdi = ((HocaBilgileri) editEvent.getObject()).getHocaAdi();
+        String hocaSoyadi = ((HocaBilgileri) editEvent.getObject()).getHocaSoyadi();
+        String hocaSeviye = ((HocaBilgileri) editEvent.getObject()).getHocaSeviye();
+
+        secilenHocaBilgileri = (HocaBilgileri) editEvent.getObject();
+        secilenHocaBilgileri.setId(hocaId);
+        secilenHocaBilgileri.setHocaAdi(hocaAdi);
+        secilenHocaBilgileri.setHocaSoyadi(hocaSoyadi);
+        secilenHocaBilgileri.setHocaSeviye(hocaSeviye);
+
+        boolean silindimi = hocaService.hocaSil(secilenHocaBilgileri);
+        if (silindimi) {
+            message = hocaAdi + " " + hocaSoyadi + " hoca silinmiştir.";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, message));
+            hocaListesi = hocaService.hocaBilgileriGetir();
+        } else {
+            message = hocaAdi + " " + hocaSoyadi + " hoca silinemedi.";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, message));
+        }
+
+    }
+
     public void onRowCancel(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Güncelleme iptal edildi.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -99,6 +127,14 @@ public class HocaController implements Serializable {
 
     public void setHocaListesi(List<HocaBilgileri> hocaListesi) {
         this.hocaListesi = hocaListesi;
+    }
+
+    public List<HocaBilgileri> getAramaHocaBilgileri() {
+        return aramaHocaBilgileri;
+    }
+
+    public void setAramaHocaBilgileri(List<HocaBilgileri> aramaHocaBilgileri) {
+        this.aramaHocaBilgileri = aramaHocaBilgileri;
     }
 
 }

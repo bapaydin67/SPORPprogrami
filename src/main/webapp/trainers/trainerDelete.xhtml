@@ -13,29 +13,27 @@
             <ui:define name="content">
                 <h:form id="form">
                     <p:messages id="hataMesaji" />
-                    <p:dataTable value="#{hocaController.hocaListesi}" var="hoca"
-                                 widgetVar="trainerTable" emptyMessage="No trainers found with given criteria"
-                                 editable="true" style="margin-bottom:20px;" rows="10" paginator="true" 
-                                 filteredValue="#{hocaController.aramaHocaBilgileri}">
-
+                    <p:dataTable value="#{hocaController.hocaListesi}" var="hoca" emptyMessage="No trainers found with given criteria"
+                                 editable="true" widgetVar="trainerTable" style="margin-bottom:20px;" rows="10" 
+                                 paginator="true" filteredValue="#{hocaController.aramaHocaBilgileri}">
+                        
                         <f:facet name="header">
-                            Hoca Tablosu Güncelleme
+                            Hoca Tablosu Silme
                         </f:facet>
 
-                        
-                            <f:facet name="header">
-                                <p:outputPanel style="float:right;">
-                                    <h:outputText value="Search all fields:" />
-                                    <p:inputText id="globalFilter" onkeyup="PF('trainerTable').filter()" 
-                                                 style="width:150px" placeholder="Enter keyword"/>
-                                </p:outputPanel>
-                            </f:facet>
-                    
+                        <f:facet name="header">
+                            <p:outputPanel style="float:right;">
+                                <h:outputText value="Search all fields:" />
+                                <p:inputText id="globalFilter" onkeyup="PF('trainerTable').filter()" 
+                                             style="width:150px" placeholder="Enter keyword"/>
+                            </p:outputPanel>
+                        </f:facet>
 
-                        <p:ajax event="rowEdit" listener="#{hocaController.hocaBilgisiGüncelle}" update=":form:hataMesaji"/>
+
+                        <p:ajax event="rowEdit" listener="#{hocaController.hocaBilgisiSil}" update=":form:hataMesaji"/>
                         <p:ajax event="rowEditCancel" listener="#{hocaController.onRowCancel}" update=":form:hataMesaji" />
 
-                        <p:column headerText="Hoca ID" sortBy="#{hoca.id}" filterBy="#{hoca.id}" filterMatchMode="contains">
+                         <p:column headerText="Hoca ID" sortBy="#{hoca.id}" filterBy="#{hoca.id}" filterMatchMode="contains">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{hoca.id}" /></f:facet>
                                 <f:facet name="input"><p:inputText value="#{hoca.id}" style="width:100%"/></f:facet>
@@ -65,7 +63,7 @@
 
 
                         <p:column style="width: 100px;">
-                            <p:rowEditor/>Güncelle
+                            <p:rowEditor/>Sil
                         </p:column>
                     </p:dataTable>
 

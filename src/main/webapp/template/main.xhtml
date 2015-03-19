@@ -2,10 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        
+
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
         <title>SporProgrami</title>
@@ -311,7 +312,16 @@
                             <img src="../resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <h:outputText value="#{loginController.jyp.firstName}"/><br/>
+                            <h:form>
+                                <h:outputText value="#{loginController.jyp.firstName}"/><br/>
+
+                                <div class="input-group" style="float:right;">
+                                    <p:commandButton value="Log out" styleClass="btn btn-success btn-sm"
+                                                     action="#{loginController.logout()}" icon="ui ui-icon-extlink" />
+
+
+                                </div>
+                            </h:form>
                         </div>
                     </div>
                     <!-- search form -->
@@ -330,82 +340,82 @@
 
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-pie-chart"></i>
+                                <i class="fa fa-male"></i>
                                 <span>UYE BILGISI ISLEMLERI</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-hand-o-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../uyeKayit/UyeEkleEkrani.xhtml"><i class="fa fa-circle-o"></i>UYE EKLE</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>UYE GUNCELLE</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>UYE SIL</a></li>
+                                <li><a href="../member/memberInsert.xhtml"><i class="fa fa-plus-circle"></i>UYE EKLE</a></li>
+                                <li><a href="../member/memberUpdate.xhtml"><i class="fa fa-pencil"></i>UYE GUNCELLE</a></li>
+                                <li><a href="#"><i class="fa fa-trash-o"></i>UYE SIL</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-pie-chart"></i>
+                                <i class="fa fa-user"></i>
                                 <span>KULLANICI ISLEMLERI</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-hand-o-left  pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../user/userInsert.xhtml"><i class="fa fa-circle-o"></i>KULLANICI EKLE</a></li>
-                                <li><a href="../user/userList.xhtml"><i class="fa fa-circle-o"></i>KULLANICI GUNCELLE</a></li>
-                                <li><a href="../user/userDelete.xhtml"><i class="fa fa-circle-o"></i>KULLANICI SIL</a></li>
+                                <li><a href="../user/userInsert.xhtml"><i class="fa fa-plus-circle"></i>KULLANICI EKLE</a></li>
+                                <li><a href="../user/userUpdate.xhtml"><i class="fa fa-pencil"></i>KULLANICI GUNCELLE</a></li>
+                                <li><a href="../user/userDelete.xhtml"><i class="fa fa-trash-o"></i>KULLANICI SIL</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-pie-chart"></i>
+                                <i class="fa fa-male"></i>
                                 <span>HOCA ISLEMLERI</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-hand-o-left  pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../trainers/trainerInsert.xhtml"><i class="fa fa-circle-o"></i>HOCA EKLE</a></li>
-                                <li><a href="../trainers/trainerUpdate.xhtml"><i class="fa fa-circle-o"></i>HOCA GUNCELLE</a></li>
-                                <li><a href="../user/userDelete.xhtml"><i class="fa fa-circle-o"></i>HOCA SIL</a></li>
+                                <li><a href="../trainers/trainerInsert.xhtml"><i class="fa fa-plus-circle"></i>HOCA EKLE</a></li>
+                                <li><a href="../trainers/trainerUpdate.xhtml"><i class="fa fa-pencil"></i>HOCA GUNCELLE</a></li>
+                                <li><a href="../trainers/trainerDelete.xhtml"><i class="fa fa-trash-o"></i>HOCA SIL</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-laptop"></i>
+                                <i class="fa fa-calendar"></i>
                                 <span>GUN ISLEMLER</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-hand-o-left  pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i>GUN EKLE</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>GUN GUNCELLE</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>GUN SIL</a></li>
+                                <li><a href="#"><i class="fa fa-plus-circle"></i>GUN EKLE</a></li>
+                                <li><a href="#"><i class="fa fa-pencil"></i>GUN GUNCELLE</a></li>
+                                <li><a href="#"><i class="fa fa-trash-o"></i>GUN SIL</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-edit"></i><span>ANATOMI ISLEMLERI</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-hand-o-left  pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i>BOLGE EKLE</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>BOLGE GUNCELLE</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>BOLGE SIL</a></li>
+                                <li><a href="#"><i class="fa fa-plus-circle"></i>BOLGE EKLE</a></li>
+                                <li><a href="#"><i class="fa fa-pencil"></i>BOLGE GUNCELLE</a></li>
+                                <li><a href="#"><i class="fa fa-trash-o"></i>BOLGE SIL</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-table"></i><span>SPOR PROGRAMI</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-hand-o-left  pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i>PROGRAM OLUSTUR</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>PROGRAM GUNCELLE</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>PROGRAM SIL</a></li>
+                                <li><a href="#"><i class="fa fa-plus-circle"></i>PROGRAM OLUSTUR</a></li>
+                                <li><a href="#"><i class="fa fa-pencil"></i>PROGRAM GUNCELLE</a></li>
+                                <li><a href="#"><i class="fa fa-trash-o"></i>PROGRAM SIL</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-folder"></i><span>UYE BILGILERI</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-eye"></i><span>UYE BILGILERI</span>
+                                <i class="fa fa-hand-o-left  pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i>UYE BILGISI GETIR</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>PROGRAM ARA</a></li>
+                                <li><a href="#"><i class="fa fa-suitcase"></i>UYE BILGISI GETIR</a></li>
+                                <li><a href="#"><i class="fa fa-search"></i>PROGRAM ARA</a></li>
                             </ul>
                         </li>
 

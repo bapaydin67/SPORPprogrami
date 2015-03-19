@@ -109,7 +109,7 @@ public class KullaniciController implements Serializable {
             boolean silindimi = kullaniciEkleService.kullaniciSil(secilenKullaniciTablosu);
             if (silindimi) {
 
-                message = "Veri başariyla silindi";
+                message = kullaniciAdi+" adlı ve sifresi "+kullaniciSifre+" veri başariyla silindi";
                 FacesMessage fsg = new FacesMessage(message, message);
                 FacesContext.getCurrentInstance().addMessage(null, fsg);
 

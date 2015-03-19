@@ -60,4 +60,16 @@ public class HocaService {
         }
         
     }
+    
+    public boolean hocaSil(HocaBilgileri hocaBilgileri){
+        try{
+            hocaBilgileri = entityManager.merge(hocaBilgileri);
+            entityManager.remove(hocaBilgileri);
+            return true;
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+            return false;
+        }
+    }
+    
 }
