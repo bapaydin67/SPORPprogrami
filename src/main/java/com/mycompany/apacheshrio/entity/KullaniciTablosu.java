@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.mycompany.apacheshrio.entity;
 
 import java.io.Serializable;
@@ -32,21 +33,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "KullaniciTablosu.findByKullaniciAdi", query = "SELECT k FROM KullaniciTablosu k WHERE k.kullaniciAdi = :kullaniciAdi"),
     @NamedQuery(name = "KullaniciTablosu.findByKullaniciSifresi", query = "SELECT k FROM KullaniciTablosu k WHERE k.kullaniciSifresi = :kullaniciSifresi")})
 public class KullaniciTablosu implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     @Column(name = "Id")
-    private int id;
-   
-    @NotNull
-    @Size(min = 1, max = 50)
+    private Integer id;
+    @Size(max = 255)
     @Column(name = "KullaniciAdi")
     private String kullaniciAdi;
-
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 255)
     @Column(name = "KullaniciSifresi")
     private String kullaniciSifresi;
 
@@ -57,17 +52,11 @@ public class KullaniciTablosu implements Serializable {
         this.id = id;
     }
 
-    public KullaniciTablosu(Integer id, String kullaniciAdi, String kullaniciSifresi) {
-        this.id = id;
-        this.kullaniciAdi = kullaniciAdi;
-        this.kullaniciSifresi = kullaniciSifresi;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -88,8 +77,28 @@ public class KullaniciTablosu implements Serializable {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof KullaniciTablosu)) {
+            return false;
+        }
+        KullaniciTablosu other = (KullaniciTablosu) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "com.mycompany.apacheshrio.entity.KullaniciTablosu[ id=" + id + " ]";
     }
-
+    
 }

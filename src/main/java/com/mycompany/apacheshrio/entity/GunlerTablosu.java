@@ -36,9 +36,7 @@ public class GunlerTablosu implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 255)
     @Column(name = "GunAdi")
     private String gunAdi;
 
@@ -47,11 +45,6 @@ public class GunlerTablosu implements Serializable {
 
     public GunlerTablosu(Integer id) {
         this.id = id;
-    }
-
-    public GunlerTablosu(Integer id, String gunAdi) {
-        this.id = id;
-        this.gunAdi = gunAdi;
     }
 
     public Integer getId() {

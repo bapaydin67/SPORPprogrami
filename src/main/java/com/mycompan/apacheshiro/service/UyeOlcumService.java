@@ -5,7 +5,10 @@
  */
 package com.mycompan.apacheshiro.service;
 
+import com.mycompany.apacheshrio.entity.HocaBilgileri;
 import com.mycompany.apacheshrio.entity.UyeBilgisi;
+import com.mycompany.apacheshrio.entity.UyeOlcum;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -15,36 +18,26 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+/**
+ *
+ * @author Batuhan
+ */
 @Stateless
-public class UyeService {
+public class UyeOlcumService implements Serializable {
 
     @PersistenceContext(unitName = "com.mycompany_ApacheShiro_war_1.0-SNAPSHOTPU")
     EntityManager entityManager;
 
-    public boolean UYEKAYITYAP(UyeBilgisi uyeBilgisi) {
+    public boolean uyeOlcumKayit(UyeOlcum uyeOlcum) {
         try {
-            entityManager.persist(uyeBilgisi);
+            entityManager.persist(uyeOlcum);
             return true;
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
             return false;
         }
     }
 
-    public List<UyeBilgisi> uyeleriGetir() {
-        List<UyeBilgisi> uyeListesi = new ArrayList<>();
-        Query query = entityManager.createQuery("Select U from UyeBilgisi U");
-        try {
-            uyeListesi = query.getResultList();
-            return uyeListesi;
-        } catch (NoResultException nre) {
-            nre.printStackTrace(System.out);
-            return null;
-        } catch (NonUniqueResultException nue) {
-            return (List<UyeBilgisi>) query.getResultList().get(0);
-        }
-    }
-    
     public List<UyeBilgisi> uyeleriIsmeGoreGetir(UyeBilgisi uyeBilgisi) {
         List<UyeBilgisi> uyeIsımListesi = new ArrayList<>();
         Query query = entityManager.createQuery("Select U from UyeBilgisi U where U.uyeAdi=:uyeAdiParam");
@@ -59,31 +52,31 @@ public class UyeService {
             return (List<UyeBilgisi>) query.getResultList().get(0);
         }
     }
-    
-    
-    public boolean uyeBilgisiGuncele(UyeBilgisi uyeBilgisi) {
-        try {
-            entityManager.merge(uyeBilgisi);
-            return true;
-        } catch (Exception ex) {
-            ex.printStackTrace(System.out);
-            return false;
-        }
 
+    public List<UyeOlcum> uyeOlcumBilgileriniGetir() {
+        List<UyeOlcum> uyeOlcumBilgileri = new ArrayList<>();
+        Query query = entityManager.createQuery("SELECT u FROM UyeOlcum u");
+        try {
+            uyeOlcumBilgileri = query.getResultList();
+            return uyeOlcumBilgileri;
+        } catch (NoResultException nre) {
+            nre.printStackTrace(System.out);
+            return null;
+        } catch (NonUniqueResultException nue) {
+            return (List<UyeOlcum>) query.getResultList().get(0);
+        }
     }
 
 
-    public boolean uyeBilgisiSil(UyeBilgisi uyeBilgisi) {
+    public boolean uyeOlcumGuncelle(UyeOlcum uyeOlcum) {
         try {
-            uyeBilgisi = entityManager.merge(uyeBilgisi);
-            entityManager.remove(uyeBilgisi);
+            entityManager.merge(uyeOlcum);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }
-    }
-    
 
+    }
 
 }

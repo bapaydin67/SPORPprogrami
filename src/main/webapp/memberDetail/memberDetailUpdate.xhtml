@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width"/>
+    </head>
+    <body>
+        <ui:composition template="./../template/main.xhtml">
+
+            <ui:define name="content">
+
+                <div class="widget">
+
+                    <div class="widget-header">
+                        <h3>
+                            <i class="fa fa-edit"></i>
+                            Üye Ekle Paneli
+                        </h3>
+                    </div>
+
+
+                    <div class="widget-content">
+
+                        <h:form class="form-horizontal" id="bilgiler">
+
+
+                            <p:dataTable value="#{uyeOlcumController.uyeOlcumBilgi}" var="o" 
+                                         widgetVar="uyeOlcumTablosu" emptyMessage="No trainers found with given criteria"
+                                         editable="true" style="margin-bottom:20px;" rows="10" paginator="true" 
+                                         filteredValue="#{uyeOlcumController.uyeAramaListesi}">
+
+                                <f:facet name="header">
+                                    Uye Olcum Güncelleme
+                                </f:facet>
+
+
+                                <f:facet name="header">
+                                    <p:outputPanel style="float:right;">
+                                        <h:outputText value="Search all fields:" />
+                                        <p:inputText id="globalFilter" onkeyup="PF('uyeOlcumTablosu').filter()" 
+                                                     style="width:150px" placeholder="Enter keyword"/>
+                                    </p:outputPanel>
+                                </f:facet>
+
+
+                                <p:ajax event="rowEdit" listener="#{uyeOlcumController.uyeOlcumGuncelle}"/>
+                                <p:ajax event="rowEditCancel" listener="#{uyeOlcumController.onRowCancel}"  />
+                                
+                                  <p:column headerText="Uye Id" filterBy="#{o.uyeId}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{o.uyeId}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.uyeId}" style="width:100%"/> </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Olcum ID" sortBy="#{o.id}" filterBy="#{o.id}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{o.id}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.id}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Uye Adı" sortBy="#{uyeController.uyeBilgisi.uyeAdi}" filterBy="#{uyeController.uyeBilgisi.uyeAdi}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{uyeController.uyeBilgisi.uyeAdi}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{uyeController.uyeBilgisi.uyeAdi}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Uye Soyadı" sortBy="#{uyeController.uyeBilgisi.uyeSoyadi}" filterBy="#{uyeController.uyeBilgisi.uyeSoyadi}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{uyeController.uyeBilgisi.uyeSoyadi}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{uyeController.uyeBilgisi.uyeSoyadi}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Uye Ideal Kilo :" filterBy="#{o.idealKilosu}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{o.idealKilosu}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.idealKilosu}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Uye Kas Orani" filterBy="#{o.kasOrani}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{o.kasOrani}"/></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.kasOrani}" style="width:100%"/> </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Uye Kilo" filterBy="#{o.kilo}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{o.kilo}"/></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.kilo}" style="width:100%"/> </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Olcum Tarihi " filterBy="#{o.tarih}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{o.tarih}"/></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.tarih}" style="width:100%"/> </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Uye Yag Orani " filterBy="#{o.yagOrani}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{o.yagOrani}"/></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.yagOrani}" style="width:100%"/> </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+
+
+                                <p:column headerText="Uye Metabolizma Yasi" filterBy="#{o.metabolizmaYasi}" filterMatchMode="contains">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{o.metabolizmaYasi}"/></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.metabolizmaYasi}" style="width:100%"/> </f:facet>
+                                    </p:cellEditor>
+                                </p:column>p:column
+
+                              
+
+                                <p:column style="width: 100px;">
+                                    <p:rowEditor/>Güncelle
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div> 
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>

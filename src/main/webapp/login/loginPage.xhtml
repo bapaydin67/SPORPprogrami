@@ -3,8 +3,9 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta charset="UTF-8"/>
-        <title>AdminLTE 2 | Registration Page</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
+        <title>Jatomi Registration Page</title>
+
         <!-- Bootstrap 3.3.2 -->
         <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->
@@ -12,9 +13,8 @@
         <!-- Theme style -->
         <link href="../resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
         <!-- iCheck -->
-        <link href="../resources/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
-        <link href="../resources/plugins/iCheck/polaris/polaris.css" rel="stylesheet" type="text/css" />
         <link href="../resources/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -98,67 +98,73 @@
 
             .ui-button{
                 width: 100px;
+                height: 40px;
             }
         </style>
     </h:head>
-    <h:body class="register-page">
-        <header>
-            <nav class="frame" role="navigation">
-                <div class="container-fluid">
-                    <a href="http://almsaeedstudio.com/" class="brand">
-                        Jatomi Yönetim
-                        <small class="text-muted hidden-xs">Jatomi</small>
-                    </a>
-                </div>
-            </nav>
-        </header>
-        <div class="register-box">
-            <div class="register-logo">
+    <h:body class="login-page">
+        <div class="login-box">
+            <div class="login-logo">
                 <a href="../../index2.html"><b>Jatomi</b>Fitness</a>
-            </div>
-
-            <div class="register-box-body">
-                <p class="login-box-msg">Jatomi Admin Giriş</p>
+            </div><!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Sign in to start your Sport Editor</p>
                 <h:form>
+                    <p:messages id="hata" />
+                    
                     <div class="form-group has-feedback">
-                        <p:inputText styleClass="form-control" placeholder="Ad Soyad" value="#{loginController.jyp.firstName}"/>
+                        <p:inputText styleClass="form-control" value="#{loginController.jyp.firstName}" 
+                                    required="true" requiredMessage="Ad boş bırakılamaz!"
+                                    placeholder="Ad"/>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
+                    
+                    
                     <div class="form-group has-feedback">
-                        <p:inputText styleClass="form-control" placeholder="Email" value="#{loginController.jyp.email}"/>
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                       <span class="glyphicon glyphicon-envelope form-control-feedback"></span>  
+                        <p:inputText styleClass="form-control" value="#{loginController.jyp.email}" 
+                                     required="true" requiredMessage="Email boş bırakılamaz!"
+                                     placeholder="Email"/>
+                       
                     </div>
                     <div class="form-group has-feedback">
-                        <p:password styleClass="form-control" placeholder="Şifre" value="#{loginController.jyp.password}"/>
+                        <p:password  styleClass="form-control" value="#{loginController.jyp.password}" 
+                                     required="true" requiredMessage="Şifre boş bırakılamaz!"
+                                     placeholder="Şifre"/>
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
-
                     <div class="row">
                         <div class="col-xs-8">    
                             <div class="checkbox icheck">
-
-                                <h:selectBooleanCheckbox value="#{loginController.rememberMe}"/> Beni Hatırla
-
+                                <label>
+                                    <h:selectBooleanCheckbox 
+                                         value="#{loginController.rememberMe}"/> Remember Me 
+                                    <br/>
+                                    <a href="#" >Şifre mi unuttum?</a>
+                                </label> 
                             </div>                        
                         </div><!-- /.col -->
-                        <div class="col-xs-4" >
-                            <p:commandButton styleClass="btn btn-primary pull-right" icon="ui ui-icon-check" 
-                                             value="Giriş" action="#{loginController.authenticate()}"/><br/>
+                        <div class="col-xs-4"> 
+                            
+                            <p:commandButton styleClass="btn btn-success btn-block btn-flat" value="Giriş"
+                                             action="#{loginController.authenticate()}"
+                                             update="hata" icon="ui-icon-check"/>
+                                             
+                           
                         </div><!-- /.col -->
-                        <br/>
-                        <br/>
-                       <a href="http://localhost:9099/ApacheShiro/mail/mail.xhtml">Şifremi Unuttum?</a>
                     </div>
-                </h:form>        
-            </div><!-- /.form-box -->
-        </div><!-- /.register-box -->
+                </h:form>
+  
+            </div><!-- /.login-box-body -->
+        </div><!-- /.login-box -->
 
         <!-- jQuery 2.1.3 -->
         <script src="../resources/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+
         <!-- Bootstrap 3.3.2 JS -->
-        <script src="../resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../resources//bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- iCheck -->
-        <script src="../resources/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        <script src="../resources//plugins/iCheck/icheck.min.js" type="text/javascript"></script>
         <script>
             $(function() {
                 $('input').iCheck({
@@ -168,6 +174,5 @@
                 });
             });
         </script>
-
     </h:body>
 </html>

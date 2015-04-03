@@ -71,22 +71,28 @@ public class KullaniciController implements Serializable {
     }
 
     public void tabloyuGüncelle(RowEditEvent editEvent) {
-
         String kullaniciAdi = ((KullaniciTablosu) editEvent.getObject()).getKullaniciAdi();
         String kullaniciSifre = ((KullaniciTablosu) editEvent.getObject()).getKullaniciSifresi();
+        try {
 
-        FacesMessage fsg = new FacesMessage(kullaniciAdi + " adlı ve şifresi " + kullaniciSifre + " güncellendi.");
+            FacesMessage fsg = new FacesMessage(kullaniciAdi + " adlı ve şifresi " + kullaniciSifre + " güncellendi.");
 
-        FacesContext.getCurrentInstance().addMessage(null, fsg);
+            FacesContext.getCurrentInstance().addMessage(null, fsg);
 
-        String yeniKullaniciAdi = ((KullaniciTablosu) editEvent.getObject()).getKullaniciAdi();
-        String yeniKullaniciSifre = ((KullaniciTablosu) editEvent.getObject()).getKullaniciSifresi();
+            String yeniKullaniciAdi = ((KullaniciTablosu) editEvent.getObject()).getKullaniciAdi();
+            String yeniKullaniciSifre = ((KullaniciTablosu) editEvent.getObject()).getKullaniciSifresi();
 
-        KullaniciTablosu yeniKullaniciTablosu = (KullaniciTablosu) editEvent.getObject();
-        yeniKullaniciTablosu.setKullaniciAdi(yeniKullaniciAdi);
-        yeniKullaniciTablosu.setKullaniciSifresi(yeniKullaniciSifre);
+            KullaniciTablosu yeniKullaniciTablosu = (KullaniciTablosu) editEvent.getObject();
+            yeniKullaniciTablosu.setKullaniciAdi(yeniKullaniciAdi);
+            yeniKullaniciTablosu.setKullaniciSifresi(yeniKullaniciSifre);
 
-        kullaniciEkleService.kullaniciGuncelle(yeniKullaniciTablosu);
+            kullaniciEkleService.kullaniciGuncelle(yeniKullaniciTablosu);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            FacesMessage fsg = new FacesMessage(kullaniciAdi + " adlı ve şifresi " + kullaniciSifre + " güncellenemedi.");
+
+            FacesContext.getCurrentInstance().addMessage(null, fsg);
+        }
 
     }
 
@@ -109,7 +115,7 @@ public class KullaniciController implements Serializable {
             boolean silindimi = kullaniciEkleService.kullaniciSil(secilenKullaniciTablosu);
             if (silindimi) {
 
-                message = kullaniciAdi+" adlı ve sifresi "+kullaniciSifre+" veri başariyla silindi";
+                message = kullaniciAdi + " adlı ve sifresi " + kullaniciSifre + " veri başariyla silindi";
                 FacesMessage fsg = new FacesMessage(message, message);
                 FacesContext.getCurrentInstance().addMessage(null, fsg);
 

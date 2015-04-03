@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/main.xhtml">
+
+            <ui:define name="content">
+
+                <div class="widget">
+
+                    <div class="widget-header">
+                        <h3>
+                            <i class="fa fa-edit"></i>
+                            Üye Ekle Paneli
+                        </h3>
+                    </div>
+
+
+                    <div class="widget-content">
+                        <h:form id="controller" >
+                           
+                            <div class="form-group">
+                                 <h:outputLabel for="uyeAdi" value="Üye Adı:" class="control-label"/>
+                                 <p:inputText  id="uyeAdi" value="#{uyeOlcumController.uyeBilgisi.uyeAdi}" placeholder="Üye Adı Giriniz"/> 
+                                
+                                &nbsp;
+
+                                <h:commandButton 
+                                                 value="Bilgileri Getir" action="#{uyeOlcumController.uyeIsımGetir()}" 
+                                                 class="btn btn-success" /><br/><br/>
+                                
+                                 <h:outputLabel for="uyeVerileri" value="Gelen Üye Bilgileri:" class="control-label"/>
+                                <h:selectOneMenu id="uyeVerileri" value="#{uyeOlcumController.id}">
+                                    <f:selectItems value="#{uyeOlcumController.uyeİsimBilgisiAjax}" var="uye" itemLabel="#{uye.uyeAdi} #{uye.uyeSoyadi}"
+                                                   itemValue="#{uye.id}"/>
+                                </h:selectOneMenu> 
+                                
+                                &nbsp;
+
+                                <p:commandButton value="Üye Numarasını Kaydet" action="#{uyeOlcumController.idGor()}" styleClass="btn btn-success" icon="ui-icon-check">
+                                    <p:ajax listener="#{uyeOlcumController.veriyiGetir()}" process="@form" />
+                                </p:commandButton>
+
+                            </div>
+
+                        </h:form>
+                        <h:form class="form-horizontal" id="bilgiler">
+
+                             <p:messages id="bilgiMesajı"/>
+                            <div class="form-group">
+                                <h:outputLabel id="Tarih" for="uyeOlcumTarih" value="Olcum Tarihi" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeOlcumTarih" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.tarih}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h:outputLabel id="boy" for="uyeBoy" value="Boyu" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeBoy" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.boyu}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h:outputLabel id="Kilo" for="uyeKilo" value="Kilosu" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeKilo" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.kilo}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h:outputLabel id="YagOrani" for="uyeYagOrani" value="Yag Orani" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeYagOrani" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.yagOrani}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h:outputLabel id="KasOrani" for="uyeKasOrani" value="Kas Orani" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeKasOrani" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.kasOrani}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h:outputLabel id="MetebolizmaYAS" for="uyeMetaYas" value="Metabolizma Yasi" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeMetaYas" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.metabolizmaYasi}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h:outputLabel id="IdealKilo" for="uyeIdealKilo" value="İdeal Kilo" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeIdealKilo" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.idealKilosu}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="input-group" style="float:right;">
+                                        <p:commandButton value="Üye Ölçüm Ekle" styleClass="btn btn-success"
+                                                         action="#{uyeOlcumController.uyeOlcumEkle()}" icon="ui ui-icon-check" 
+                                                         update="bilgiMesajı" process="@form"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

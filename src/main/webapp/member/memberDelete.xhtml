@@ -17,8 +17,9 @@ and open the template in the editor.
                 <h:form id="form">
                     <p:messages id="hataMesaji" />
                      <p:dataTable  value="#{uyeController.uyeListesiVer}" var="uye" 
-                                   widgetVar="UyeTablosu" emptyMessage="No cars found with given criteria"
-                                   editable="true" style="margin-bottom:20px;" rows="50" paginator="true" filteredValue="#{uyeController.uyeListesiVer}">
+                                   widgetVar="UyeTablosu" emptyMessage="Üye bulunamadı"
+                                   editable="true" style="margin-bottom:20px;" rows="50" paginator="true" 
+                                   filteredValue="#{uyeController.uyeListesiVer}">
 
                         <f:facet name="header">
                             Uye Sil

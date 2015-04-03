@@ -27,79 +27,91 @@ and open the template in the editor.
                         <h:form class="form-horizontal">
                             <p:messages id="bilgiMesajı"/>
                             <div class="form-group">
-                                <h:outputLabel id="userNameLabel" for="uyeAdi" value="Uye Adı" class="control-label"/>
+                                <h:outputLabel for="uyeAdi" value="Üye Adı" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="uyeAdi" styleClass="form-control" value="#{uyeController.uyeBilgisi.uyeAdi}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
-
+                                        <p:inputText id="uyeAdi" styleClass="form-control"
+                                                     value="#{uyeController.uyeBilgisi.uyeAdi}"
+                                                     required="true" requiredMessage="Üye Adı Boş Bırakılamaz!"
+                                                     placeholder="Ad"/>
                                     </div>
                                 </div>
                             </div>    
 
                             <div class="form-group">
-                                <h:outputLabel id="userSurnameLabel" for="uyeSoyadi" value="Uye Soyadi" class="control-label"/>
+                                <h:outputLabel  for="uyeSoyadi" value="Üye Soyadi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="uyeSoyadi" styleClass="form-control" value="#{uyeController.uyeBilgisi.uyeSoyadi}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
-
+                                        <p:inputText id="uyeSoyadi" styleClass="form-control"
+                                                     value="#{uyeController.uyeBilgisi.uyeSoyadi}"
+                                                     required="true" requiredMessage="Üye Soyadı Boş Bırakılamaz!"
+                                                     placeholder="Soyad"/>
                                     </div>
                                 </div>
                             </div>    
 
                             <div class="form-group">
-                                <h:outputLabel id="userBirthdateLabel" for="uyeD_Tarihi" value="Uye Dogum Tarihi" class="control-label"/>
+                                <h:outputLabel for="uyeD_Tarihi" value="Üye Dogum Tarihi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="uyeD_Tarihi" styleClass="form-control" value="#{uyeController.uyeBilgisi.dogumTarihi}"/>
                                         <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
+                                            <i class="fa fa-calendar"></i>
                                         </span>
-
+                                        <p:inputText id="uyeD_Tarihi" styleClass="form-control" 
+                                                     value="#{uyeController.uyeBilgisi.dogumTarihi}"
+                                                     required="true" requiredMessage="Üye Doğum Tarihi Boş Bırakılamaz!"
+                                                     placeholder="Doğum Tarihi"/>
                                     </div>
                                 </div>
                             </div> 
 
                             <div class="form-group">
-                                <h:outputLabel id="userPhoneLabel" for="TelefonNO" value="Uye Telefon Numarası" class="control-label"/>
+                                <h:outputLabel  for="telefonNo" value="Üye Telefon Numarası" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="TelefonNO" styleClass="form-control" value="#{uyeController.uyeBilgisi.telefonNo}"/>
                                         <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
+                                            <i class="fa fa-phone"></i>
                                         </span>
-
+                                        <p:inputText id="telefonNo" styleClass="form-control" 
+                                                     value="#{uyeController.uyeBilgisi.telefonNo}"
+                                                     required="true" requiredMessage="Üye Telefon Numarası Boş Bırakılamaz!"
+                                                     placeholder="Telefon Numarası"/>
                                     </div>
                                 </div>
                             </div> 
-                            
-                             <div class="form-group">
-                                <h:outputLabel id="userEmailLabel" for="Email" value="Uye Email Adresi" class="control-label"/>
+
+                            <div class="form-group">
+                                <h:outputLabel for="uyeMail" value="Üye Email Adresi" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="Email" styleClass="form-control" value="#{uyeController.uyeBilgisi.email}"/>
                                         <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
+                                            <i class="fa fa-envelope"></i>
                                         </span>
+                                        <p:inputText id="uyeMail" styleClass="form-control" 
+                                                     value="#{uyeController.uyeBilgisi.email}"
+                                                     required="true" requiredMessage="Üye Email Adresi Boş Bırakılamaz!"
+                                                     placeholder="Email" />
 
                                     </div>
                                 </div>
                             </div>
-                            
-                                <div class="form-group">
-                                <h:outputLabel id="userSexLabel" for="Cinsiyet" value="Uye Cinsiyet" class="control-label"/>
+
+                            <div class="form-group">
+                                <h:outputLabel  for="uyeCinsiyet" value="Üye Cinsiyet" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="Cinsiyet" styleClass="form-control" value="#{uyeController.uyeBilgisi.cinsiyet}"/>
                                         <span class="input-group-addon">
-                                            <i class="fa fa-user"></i>
+                                            <i class="fa fa-male"></i><i class="fa fa-female"></i>
                                         </span>
-
+                                        <p:inputText id="uyeCinsiyet" styleClass="form-control" 
+                                                     value="#{uyeController.uyeBilgisi.cinsiyet}"
+                                                     required="true" requiredMessage="Üye Cinsiyet Boş Bırakılamaz!"/>
                                     </div>
                                 </div>
                             </div>
@@ -107,8 +119,9 @@ and open the template in the editor.
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <div class="input-group" style="float:right;">
-                                        <p:commandButton value="Uye Ekle"  process="@form" styleClass="btn btn-success"
-                                                         action="#{uyeController.UyeKayitTamamla()}" icon="ui ui-icon-check" update="bilgiMesajı"/>
+                                        <p:commandButton value="Üye Ekle"  process="@form" styleClass="btn btn-success"
+                                                         action="#{uyeController.UyeKayitTamamla()}" icon="ui ui-icon-check" 
+                                                         update="bilgiMesajı"/>
                                     </div>
                                 </div>
                             </div> 

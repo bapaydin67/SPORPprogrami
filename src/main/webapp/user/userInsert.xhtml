@@ -8,7 +8,7 @@
 
     <h:body>
 
-        <ui:composition template="./../template/main.xhtml">
+        <ui:composition template="../template/main.xhtml">
 
             <ui:define name="content">
                 <div class="widget">
@@ -16,7 +16,7 @@
                     <div class="widget-header">
                         <h3>
                             <i class="fa fa-edit"></i>
-                            Üye Ekle Paneli
+                            Kullanıcı Ekle Paneli
                         </h3>
                     </div>
 
@@ -24,26 +24,31 @@
                         <h:form class="form-horizontal">
                             <p:messages id="bilgiMesajı"/>
                             <div class="form-group">
-                                <h:outputLabel id="userNameLabel" for="userName" value="Adı" class="control-label"/>
+                                <h:outputLabel for="userName" value="Kullanıcı Adı" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:inputText id="userName" styleClass="form-control" value="#{kullaniciController.kullaniciTablosu.kullaniciAdi}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
+                                        <p:inputText id="userName" styleClass="form-control" 
+                                                     value="#{kullaniciController.kullaniciTablosu.kullaniciAdi}"
+                                                     required="true" requiredMessage="Kullanıcı Adı Boş Bırakılamaz!"/>
 
                                     </div>
                                 </div>
                             </div>    
 
                             <div class="form-group">
-                                <h:outputLabel id="passwordLabel" for="password" value="Şifre" class="control-label"/>
+                                <h:outputLabel for="password" value="Kullanıcı Şifre" class="control-label"/>
                                 <div class="col-sm-12">
                                     <div class="input-group">
-                                        <p:password id="password" styleClass="form-control" value="#{kullaniciController.kullaniciTablosu.kullaniciSifresi}"/>
                                         <span class="input-group-addon">
                                             <i class="fa fa-key"></i>
                                         </span>
+                                        <p:password id="password" styleClass="form-control" 
+                                                    value="#{kullaniciController.kullaniciTablosu.kullaniciSifresi}"
+                                                    required="true" requiredMessage="Kullanıcı Şifresi Boş Bırakılamaz!"/>
+
                                     </div>
                                 </div>
                             </div>  
@@ -51,8 +56,9 @@
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <div class="input-group" style="float:right;">
-                                        <p:commandButton value="Kullanıcı Kayıt Tamamla" styleClass="btn btn-success"
-                                                         action="#{kullaniciController.kullaniciInsert()}" icon="ui ui-icon-check" update="bilgiMesajı"/>
+                                        <p:commandButton value="Kaydet" styleClass="btn btn-success"
+                                                         action="#{kullaniciController.kullaniciInsert()}" 
+                                                         icon="ui ui-icon-check" update="bilgiMesajı"/>
                                     </div>
                                 </div>
                             </div> 

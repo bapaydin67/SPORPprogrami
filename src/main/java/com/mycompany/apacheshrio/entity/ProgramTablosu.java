@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,12 +28,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ProgramTablosu.findAll", query = "SELECT p FROM ProgramTablosu p"),
     @NamedQuery(name = "ProgramTablosu.findById", query = "SELECT p FROM ProgramTablosu p WHERE p.id = :id"),
-    @NamedQuery(name = "ProgramTablosu.findByProgramTarihi", query = "SELECT p FROM ProgramTablosu p WHERE p.programTarihi = :programTarihi"),
-    @NamedQuery(name = "ProgramTablosu.findByGunAdi", query = "SELECT p FROM ProgramTablosu p WHERE p.gunAdi = :gunAdi"),
     @NamedQuery(name = "ProgramTablosu.findByBolgeAdi", query = "SELECT p FROM ProgramTablosu p WHERE p.bolgeAdi = :bolgeAdi"),
+    @NamedQuery(name = "ProgramTablosu.findByGunAdi", query = "SELECT p FROM ProgramTablosu p WHERE p.gunAdi = :gunAdi"),
     @NamedQuery(name = "ProgramTablosu.findByHareketAdi", query = "SELECT p FROM ProgramTablosu p WHERE p.hareketAdi = :hareketAdi"),
+    @NamedQuery(name = "ProgramTablosu.findByProgramTarihi", query = "SELECT p FROM ProgramTablosu p WHERE p.programTarihi = :programTarihi"),
     @NamedQuery(name = "ProgramTablosu.findBySetSayisi", query = "SELECT p FROM ProgramTablosu p WHERE p.setSayisi = :setSayisi"),
-    @NamedQuery(name = "ProgramTablosu.findByTekrarSayisi", query = "SELECT p FROM ProgramTablosu p WHERE p.tekrarSayisi = :tekrarSayisi")})
+    @NamedQuery(name = "ProgramTablosu.findByTekrarSayisi", query = "SELECT p FROM ProgramTablosu p WHERE p.tekrarSayisi = :tekrarSayisi"),
+    @NamedQuery(name = "ProgramTablosu.findByHocaId", query = "SELECT p FROM ProgramTablosu p WHERE p.hocaId = :hocaId"),
+    @NamedQuery(name = "ProgramTablosu.findByUyeId", query = "SELECT p FROM ProgramTablosu p WHERE p.uyeId = :uyeId")})
 public class ProgramTablosu implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,56 +43,32 @@ public class ProgramTablosu implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "ProgramTarihi")
-    private String programTarihi;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "GunAdi")
-    private String gunAdi;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 75)
+    @Size(max = 255)
     @Column(name = "BolgeAdi")
     private String bolgeAdi;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 75)
+    @Size(max = 255)
+    @Column(name = "GunAdi")
+    private String gunAdi;
+    @Size(max = 255)
     @Column(name = "HareketAdi")
     private String hareketAdi;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 255)
+    @Column(name = "ProgramTarihi")
+    private String programTarihi;
     @Column(name = "SetSayisi")
-    private int setSayisi;
-    @Basic(optional = false)
-    @NotNull
+    private Integer setSayisi;
     @Column(name = "TekrarSayisi")
-    private int tekrarSayisi;
-    @JoinColumn(name = "HocaId", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
-    private HocaBilgileri hocaId;
-    @JoinColumn(name = "UyeId", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
-    private UyeBilgisi uyeId;
+    private Integer tekrarSayisi;
+    @Column(name = "HocaId")
+    private Integer hocaId;
+    @Column(name = "UyeId")
+    private Integer uyeId;
 
     public ProgramTablosu() {
     }
 
     public ProgramTablosu(Integer id) {
         this.id = id;
-    }
-
-    public ProgramTablosu(Integer id, String programTarihi, String gunAdi, String bolgeAdi, String hareketAdi, int setSayisi, int tekrarSayisi) {
-        this.id = id;
-        this.programTarihi = programTarihi;
-        this.gunAdi = gunAdi;
-        this.bolgeAdi = bolgeAdi;
-        this.hareketAdi = hareketAdi;
-        this.setSayisi = setSayisi;
-        this.tekrarSayisi = tekrarSayisi;
     }
 
     public Integer getId() {
@@ -103,12 +79,12 @@ public class ProgramTablosu implements Serializable {
         this.id = id;
     }
 
-    public String getProgramTarihi() {
-        return programTarihi;
+    public String getBolgeAdi() {
+        return bolgeAdi;
     }
 
-    public void setProgramTarihi(String programTarihi) {
-        this.programTarihi = programTarihi;
+    public void setBolgeAdi(String bolgeAdi) {
+        this.bolgeAdi = bolgeAdi;
     }
 
     public String getGunAdi() {
@@ -119,14 +95,6 @@ public class ProgramTablosu implements Serializable {
         this.gunAdi = gunAdi;
     }
 
-    public String getBolgeAdi() {
-        return bolgeAdi;
-    }
-
-    public void setBolgeAdi(String bolgeAdi) {
-        this.bolgeAdi = bolgeAdi;
-    }
-
     public String getHareketAdi() {
         return hareketAdi;
     }
@@ -135,35 +103,43 @@ public class ProgramTablosu implements Serializable {
         this.hareketAdi = hareketAdi;
     }
 
-    public int getSetSayisi() {
+    public String getProgramTarihi() {
+        return programTarihi;
+    }
+
+    public void setProgramTarihi(String programTarihi) {
+        this.programTarihi = programTarihi;
+    }
+
+    public Integer getSetSayisi() {
         return setSayisi;
     }
 
-    public void setSetSayisi(int setSayisi) {
+    public void setSetSayisi(Integer setSayisi) {
         this.setSayisi = setSayisi;
     }
 
-    public int getTekrarSayisi() {
+    public Integer getTekrarSayisi() {
         return tekrarSayisi;
     }
 
-    public void setTekrarSayisi(int tekrarSayisi) {
+    public void setTekrarSayisi(Integer tekrarSayisi) {
         this.tekrarSayisi = tekrarSayisi;
     }
 
-    public HocaBilgileri getHocaId() {
+    public Integer getHocaId() {
         return hocaId;
     }
 
-    public void setHocaId(HocaBilgileri hocaId) {
+    public void setHocaId(Integer hocaId) {
         this.hocaId = hocaId;
     }
 
-    public UyeBilgisi getUyeId() {
+    public Integer getUyeId() {
         return uyeId;
     }
 
-    public void setUyeId(UyeBilgisi uyeId) {
+    public void setUyeId(Integer uyeId) {
         this.uyeId = uyeId;
     }
 

@@ -37,14 +37,10 @@ public class HareketTablosu implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 255)
     @Column(name = "BolgeAdi")
     private String bolgeAdi;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 75)
+    @Size(max = 255)
     @Column(name = "HareketAdi")
     private String hareketAdi;
 
@@ -53,12 +49,6 @@ public class HareketTablosu implements Serializable {
 
     public HareketTablosu(Integer id) {
         this.id = id;
-    }
-
-    public HareketTablosu(Integer id, String bolgeAdi, String hareketAdi) {
-        this.id = id;
-        this.bolgeAdi = bolgeAdi;
-        this.hareketAdi = hareketAdi;
     }
 
     public Integer getId() {
