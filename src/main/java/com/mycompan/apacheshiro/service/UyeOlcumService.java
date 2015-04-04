@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
@@ -27,7 +28,7 @@ public class UyeOlcumService implements Serializable {
 
     @PersistenceContext(unitName = "com.mycompany_ApacheShiro_war_1.0-SNAPSHOTPU")
     EntityManager entityManager;
-
+    
     public boolean uyeOlcumKayit(UyeOlcum uyeOlcum) {
         try {
             entityManager.persist(uyeOlcum);
@@ -56,6 +57,7 @@ public class UyeOlcumService implements Serializable {
     public List<UyeOlcum> uyeOlcumBilgileriniGetir() {
         List<UyeOlcum> uyeOlcumBilgileri = new ArrayList<>();
         Query query = entityManager.createQuery("SELECT u FROM UyeOlcum u");
+        
         try {
             uyeOlcumBilgileri = query.getResultList();
             return uyeOlcumBilgileri;

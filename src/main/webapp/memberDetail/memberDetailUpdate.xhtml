@@ -71,49 +71,49 @@ and open the template in the editor.
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column headerText="Uye Adı" sortBy="#{uyeController.uyeBilgisi.uyeAdi}" filterBy="#{uyeController.uyeBilgisi.uyeAdi}" filterMatchMode="contains">
+                                <p:column headerText="Üye Adı" sortBy="#{o.uyeAdi}" filterBy="#{o.uyeAdi}" filterMatchMode="contains">
                                     <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{uyeController.uyeBilgisi.uyeAdi}" /></f:facet>
-                                        <f:facet name="input"><p:inputText value="#{uyeController.uyeBilgisi.uyeAdi}" style="width:100%"/></f:facet>
+                                        <f:facet name="output"><h:outputText value="#{o.uyeAdi}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.uyeAdi}" style="width:100%"/></f:facet>
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column headerText="Uye Soyadı" sortBy="#{uyeController.uyeBilgisi.uyeSoyadi}" filterBy="#{uyeController.uyeBilgisi.uyeSoyadi}" filterMatchMode="contains">
+                                <p:column headerText="Üye Soyadı" sortBy="#{o.uyeSoyadi}" filterBy="#{o.uyeSoyadi}" filterMatchMode="contains">
                                     <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{uyeController.uyeBilgisi.uyeSoyadi}" /></f:facet>
-                                        <f:facet name="input"><p:inputText value="#{uyeController.uyeBilgisi.uyeSoyadi}" style="width:100%"/></f:facet>
+                                        <f:facet name="output"><h:outputText value="#{o.uyeSoyadi}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{o.uyeSoyadi}" style="width:100%"/></f:facet>
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column headerText="Uye Ideal Kilo :" filterBy="#{o.idealKilosu}" filterMatchMode="contains">
+                                <p:column headerText="Üye Hedef Kilo" filterBy="#{o.idealKilosu}" filterMatchMode="contains">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText value="#{o.idealKilosu}" /></f:facet>
                                         <f:facet name="input"><p:inputText value="#{o.idealKilosu}" style="width:100%"/></f:facet>
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column headerText="Uye Kas Orani" filterBy="#{o.kasOrani}" filterMatchMode="contains">
+                                <p:column headerText="Üye Kas Oranı" filterBy="#{o.kasOrani}" filterMatchMode="contains">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText value="#{o.kasOrani}"/></f:facet>
                                         <f:facet name="input"><p:inputText value="#{o.kasOrani}" style="width:100%"/> </f:facet>
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column headerText="Uye Kilo" filterBy="#{o.kilo}" filterMatchMode="contains">
+                                <p:column headerText="Üye Kilo" filterBy="#{o.kilo}" filterMatchMode="contains">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText value="#{o.kilo}"/></f:facet>
                                         <f:facet name="input"><p:inputText value="#{o.kilo}" style="width:100%"/> </f:facet>
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column headerText="Olcum Tarihi " filterBy="#{o.tarih}" filterMatchMode="contains">
+                                <p:column headerText="Üye Ölçüm Tarihi" filterBy="#{o.tarih}" filterMatchMode="contains">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText value="#{o.tarih}"/></f:facet>
                                         <f:facet name="input"><p:inputText value="#{o.tarih}" style="width:100%"/> </f:facet>
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column headerText="Uye Yag Orani " filterBy="#{o.yagOrani}" filterMatchMode="contains">
+                                <p:column headerText="Yağ Oranı" filterBy="#{o.yagOrani}" filterMatchMode="contains">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText value="#{o.yagOrani}"/></f:facet>
                                         <f:facet name="input"><p:inputText value="#{o.yagOrani}" style="width:100%"/> </f:facet>
@@ -122,7 +122,7 @@ and open the template in the editor.
 
 
 
-                                <p:column headerText="Uye Metabolizma Yasi" filterBy="#{o.metabolizmaYasi}" filterMatchMode="contains">
+                                <p:column headerText="Metabolizma Yaşı" filterBy="#{o.metabolizmaYasi}" filterMatchMode="contains">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText value="#{o.metabolizmaYasi}"/></f:facet>
                                         <f:facet name="input"><p:inputText value="#{o.metabolizmaYasi}" style="width:100%"/> </f:facet>
@@ -132,7 +132,10 @@ and open the template in the editor.
                               
 
                                 <p:column style="width: 100px;">
-                                    <p:rowEditor/>Güncelle UYE OLCUM
+                                    <f:facet name="header">
+                                     İşlem
+                                    </f:facet>
+                                    <p:rowEditor/>Ekle
                                 </p:column>
                             </p:dataTable>
                         </h:form>

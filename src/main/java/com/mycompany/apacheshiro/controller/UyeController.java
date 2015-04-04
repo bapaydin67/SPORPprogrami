@@ -5,8 +5,10 @@
  */
 package com.mycompany.apacheshiro.controller;
 
+import com.mycompan.apacheshiro.service.UyeOlcumService;
 import com.mycompan.apacheshiro.service.UyeService;
 import com.mycompany.apacheshrio.entity.UyeBilgisi;
+import com.mycompany.apacheshrio.entity.UyeOlcum;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +25,17 @@ import org.primefaces.event.RowEditEvent;
 public class UyeController implements Serializable{
 
     UyeBilgisi uyeBilgisi = new UyeBilgisi();
+    UyeOlcum uyeOlcum = new UyeOlcum();
+    
+    
     @Inject
     UyeService uyeService;
+    
+    @Inject
+    UyeOlcumService uyeOlcumService;
+    
     private String MesajGoster;
-    UyeService yeniUyeEkleService;
+    
     UyeBilgisi secilenUye = new UyeBilgisi();
 
     List<UyeBilgisi> uyeListesiVer = new ArrayList<UyeBilgisi>();  
@@ -43,6 +52,10 @@ public class UyeController implements Serializable{
             UyeEklendiMI = uyeService.UYEKAYITYAP(uyeBilgisi);
             if (UyeEklendiMI) {
                 MesajGoster = "Uye Kayit Yapıldı.";
+                uyeOlcum.setUyeId(uyeBilgisi.getId());
+                uyeOlcum.setUyeAdi(uyeBilgisi.getUyeAdi());
+                uyeOlcum.setUyeSoyadi(uyeBilgisi.getUyeSoyadi());
+                uyeOlcumService.uyeOlcumKayit(uyeOlcum);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(MesajGoster, "Başarılı"));
             } else {
                 MesajGoster = "Uye Kayit Yapılmadı.";
@@ -75,7 +88,7 @@ public class UyeController implements Serializable{
         yeniUyeBilgisi.setEmail(uyeYeniMailAdres);
         yeniUyeBilgisi.setCinsiyet(uyeYeniCinsiyet);
 
-        yeniUyeEkleService.uyeBilgisiGuncele(yeniUyeBilgisi);
+        uyeService.uyeBilgisiGuncele(yeniUyeBilgisi);
 
     }
 
@@ -86,12 +99,12 @@ public class UyeController implements Serializable{
             secilenUye = (UyeBilgisi) rowEditEvent.getObject();
             secilenUye.setId(uyeId);
 
-            boolean uyeSilindiMi = yeniUyeEkleService.uyeBilgisiSil(secilenUye);
+            boolean uyeSilindiMi = uyeService.uyeBilgisiSil(secilenUye);
             if (uyeSilindiMi) {
                 MesajGoster = "Secilen Uye Başarıyla Silindi.";
                 FacesMessage facesMessage = new FacesMessage(MesajGoster, MesajGoster);
                 FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-                uyeListesiVer = yeniUyeEkleService.uyeleriGetir();
+                uyeListesiVer = uyeService.uyeleriGetir();
 
             } else {
                 MesajGoster = "Seçilen Uye Silinemedi.";

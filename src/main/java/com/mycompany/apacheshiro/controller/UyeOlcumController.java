@@ -38,6 +38,7 @@ public class UyeOlcumController implements Serializable {
 
     List<UyeBilgisi> uyeIsımBilgisi = new ArrayList<UyeBilgisi>();
     List<UyeBilgisi> uyeİsimBilgisiAjax = new ArrayList<UyeBilgisi>();
+    
     List<UyeOlcum> uyeOlcumBilgi = new ArrayList<UyeOlcum>();
     List<UyeOlcum> uyeAramaListesi = new ArrayList<UyeOlcum>();
 
@@ -89,6 +90,10 @@ public class UyeOlcumController implements Serializable {
             e.printStackTrace();
         }
     }
+    
+    public void uyeOlcumIdyeGore(){
+        
+    }
 
     public void uyeOlcumGuncelle(RowEditEvent rowEditEvent) {
         int uyeId = ((UyeOlcum) rowEditEvent.getObject()).getUyeId();
@@ -124,7 +129,6 @@ public class UyeOlcumController implements Serializable {
     }
 
     public void veriyiGetir() {
-        this.id = id;
         this.uyeOlcum.setUyeId(id);
     }
 

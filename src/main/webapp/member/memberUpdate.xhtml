@@ -30,6 +30,10 @@ and open the template in the editor.
                                 <p:inputText id="globalFilter" onkeyup="PF('UyeTablosu').filter()" style="width:170px;height: 25px; margin-top: 0px" placeholder=" Uye Arama"/>
                             </p:outputPanel>
                         </f:facet>
+                        
+                        
+                        <p:ajax event="rowEdit" listener="#{uyeController.uyeTablosunuGuncelle}"/>
+                        <p:ajax event="rowEditCancel" listener="#{uyeController.onRowCancel}"/>
 
 
 
@@ -81,6 +85,13 @@ and open the template in the editor.
                                 <f:facet name="input"><p:inputText value="#{uye.cinsiyet}" style="width:100%"/></f:facet>
                             </p:cellEditor>
                         </p:column>
+                        
+                         <p:column style="width: 100px;">
+                                    <f:facet name="header">
+                                        İşlem
+                                    </f:facet>
+                                    <p:rowEditor/>Güncelle
+                                </p:column>
                     </p:dataTable>
                 </h:form>
             </ui:define>

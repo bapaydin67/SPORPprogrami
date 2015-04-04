@@ -72,7 +72,6 @@ public class UyeService {
 
     }
 
-
     public boolean uyeBilgisiSil(UyeBilgisi uyeBilgisi) {
         try {
             uyeBilgisi = entityManager.merge(uyeBilgisi);
@@ -83,7 +82,6 @@ public class UyeService {
             return false;
         }
     }
-    
 
-
+   
 }

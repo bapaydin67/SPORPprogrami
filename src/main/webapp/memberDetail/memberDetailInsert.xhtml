@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+    <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -53,6 +53,32 @@
                         <h:form class="form-horizontal" id="bilgiler">
 
                              <p:messages id="bilgiMesajı"/>
+                              <div class="form-group">
+                                <h:outputLabel for="uyeAdi" value="Üye Adı" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeAdi" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.uyeAdi}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="form-group">
+                                <h:outputLabel for="uyeSoyadi" value="Üye Soyadı" class="control-label"/>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <p:inputText id="uyeSoyadi" styleClass="form-control" value="#{uyeOlcumController.uyeOlcum.uyeSoyadi}"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                             
+                             
                             <div class="form-group">
                                 <h:outputLabel id="Tarih" for="uyeOlcumTarih" value="Olcum Tarihi" class="control-label"/>
                                 <div class="col-sm-12">

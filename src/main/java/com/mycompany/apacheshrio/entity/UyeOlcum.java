@@ -37,7 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "UyeOlcum.findByMetabolizmaYasi", query = "SELECT u FROM UyeOlcum u WHERE u.metabolizmaYasi = :metabolizmaYasi"),
     @NamedQuery(name = "UyeOlcum.findByTarih", query = "SELECT u FROM UyeOlcum u WHERE u.tarih = :tarih"),
     @NamedQuery(name = "UyeOlcum.findByYagOrani", query = "SELECT u FROM UyeOlcum u WHERE u.yagOrani = :yagOrani"),
-    @NamedQuery(name = "UyeOlcum.findByUyeId", query = "SELECT u FROM UyeOlcum u WHERE u.uyeId = :uyeId")})
+    @NamedQuery(name = "UyeOlcum.findByUyeId", query = "SELECT u FROM UyeOlcum u WHERE u.uyeId = :uyeId"),
+    @NamedQuery(name = "UyeOlcum.findByUyeAdi", query = "SELECT u FROM UyeOlcum u WHERE u.uyeAdi = :uyeAdi"),
+    @NamedQuery(name = "UyeOlcum.findByUyeSoyadi", query = "SELECT u FROM UyeOlcum u WHERE u.uyeSoyadi = :uyeSoyadi")})
 public class UyeOlcum implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,9 +62,14 @@ public class UyeOlcum implements Serializable {
     private String tarih;
     @Column(name = "YagOrani")
     private Integer yagOrani;
-   
     @Column(name = "UyeId")
     private int uyeId;
+    @Size(max = 50)
+    @Column(name = "uyeAdi")
+    private String uyeAdi;
+    @Size(max = 50)
+    @Column(name = "uyeSoyadi")
+    private String uyeSoyadi;
 
     public UyeOlcum() {
     }
@@ -146,6 +153,22 @@ public class UyeOlcum implements Serializable {
 
     public void setUyeId(int uyeId) {
         this.uyeId = uyeId;
+    }
+
+    public String getUyeAdi() {
+        return uyeAdi;
+    }
+
+    public void setUyeAdi(String uyeAdi) {
+        this.uyeAdi = uyeAdi;
+    }
+
+    public String getUyeSoyadi() {
+        return uyeSoyadi;
+    }
+
+    public void setUyeSoyadi(String uyeSoyadi) {
+        this.uyeSoyadi = uyeSoyadi;
     }
 
     @Override
